@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHIPFRONT — Get a Quote</title>
+<meta name="description" content="Shipfront — warehousing and fulfillment in downtown Los Angeles. You Sell. We Ship.">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="rail">
+  <div class="rail-in">
+    <a class="wm" href="index.html">SHIPFRONT<i></i></a>
+    <nav>
+      <a href="index.html#why">Why Shipfront</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn" href="quote.html" aria-current="page">Get a Quote</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <section class="hero wrap">
+    <p class="eyebrow">Quote</p>
+    <h1>Fast &amp; Easy Quotes</h1>
+    <p class="lede">We have expert agents standing by to take care of your logistics needs.</p>
+  </section>
+  <section class="wrap two">
+    <form id="q" action="#" method="post" novalidate>
+      <p class="eyebrow">All three fields required</p>
+      <label for="name">Name (required)</label>
+      <input id="name" name="name" type="text" autocomplete="name" required>
+      <label for="email">Email (required)</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="company">Company (required)</label>
+      <input id="company" name="company" type="text" autocomplete="organization" required>
+      <div style="margin-top:28px"><button class="btn" type="submit">Get a Quote</button></div>
+      <p class="note">We’ll use this to quote you. A person replies.</p>
+      <p class="preview-note" id="note">Preview — a person would reply. Form is not wired.</p>
+    </form>
+    <aside class="aside">
+      <p class="eyebrow">Aside</p>
+      <p><strong>1933 S. Broadway<br>Los Angeles, CA 90007</strong></p>
+      <p><a href="mailto:info@myshipfront.com">info@myshipfront.com</a></p>
+      <p class="note">Volume and what you ship are a conversation, not fields 4 through 10.</p>
+    </aside>
+  </section>
+</main>
+<script>
+document.getElementById("q").addEventListener("submit", function (e) {
+  e.preventDefault();
+  document.getElementById("note").classList.add("show");
+});
+</script>
+<footer class="foot wrap">
+  <a class="wm" href="index.html">SHIPFRONT<i></i></a>
+  <p>You Sell. We Ship.</p>
+  <p>1933 S. Broadway<br>Los Angeles, CA 90007</p>
+  <p><a href="mailto:info@myshipfront.com">info@myshipfront.com</a></p>
+  <p><a href="index.html">Home</a> · <a href="quote.html">Get a Quote</a> · <a href="contact.html">Contact</a></p>
+</footer>
+</body>
+</html>
