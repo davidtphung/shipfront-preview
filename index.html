@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Shipfront · Home</title>
+<style>
+:root{--paper:#E8E4DB;--ink:#141311;--mist:#5A564E;--signal:#FF6A00;--hair:rgba(20,19,17,0.14)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+a{color:inherit}button,input{font:inherit}
+.mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--hair)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.mark{display:inline-block;text-decoration:none;color:var(--ink);font-weight:700;letter-spacing:.12em;font-size:14px}
+.mark span{display:block;height:4px;background:var(--signal);margin-top:4px}
+nav{display:flex;align-items:center;gap:20px}
+nav a{text-decoration:none;font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+.cta{background:var(--signal);color:var(--paper);text-decoration:none;border:0;padding:0 24px;min-height:44px;display:inline-flex;align-items:center;letter-spacing:.08em;font-size:12px;font-family:ui-monospace,"SF Mono",Menlo,monospace;text-transform:uppercase;cursor:pointer}
+.cta:focus{outline:2px solid var(--ink);outline-offset:2px}
+.cta:hover{opacity:.85}
+.hero{padding:80px 0 64px;border-bottom:1px solid var(--hair)}
+h1{font-size:clamp(40px,8vw,72px);line-height:.92;margin:0 0 20px;letter-spacing:-.02em}
+.sub{font-size:clamp(20px,3vw,30px);color:var(--mist);margin:0 0 24px}
+.lead{font-size:18px;max-width:36em;margin:0 0 28px}
+.row{display:flex;flex-wrap:wrap;gap:24px;align-items:center;margin-bottom:36px}
+.link{min-height:44px;display:inline-flex;align-items:center}
+.proof{padding:28px 0;border-bottom:1px solid var(--hair);text-align:center}
+.grid{display:grid;grid-template-columns:1fr;gap:8px 24px;padding:64px 0;border-bottom:1px solid var(--hair)}
+@media(min-width:800px){.grid{grid-template-columns:1fr 3fr}}
+.grid h2{margin:0 0 8px}
+.grid p{margin:0 0 8px;color:var(--mist);font-size:14px;line-height:1.6}
+.rule{border-top:1px solid var(--hair);padding-top:24px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:28px 0;border-bottom:1px solid var(--hair)}
+.chip{border:1px solid var(--hair);padding:8px 12px;font-size:12px}
+.essay{max-width:720px;margin:0 auto;padding:64px 24px;text-align:center;font-size:18px;line-height:1.6;border-bottom:1px solid var(--hair)}
+.end{padding:64px 0;text-align:center}
+footer{border-top:1px solid var(--hair);padding:28px 0 48px;color:var(--mist);font-size:13px;display:flex;flex-wrap:wrap;gap:16px 24px}
+.page{padding:64px 0 96px}
+.page h1{font-size:clamp(36px,6vw,56px)}
+label{display:block;margin:0 0 8px;color:var(--mist)}
+input[type=text],input[type=email]{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--hair);background:var(--paper);color:var(--ink);border-radius:0}
+.err{border-color:var(--ink)!important}
+.msg{color:var(--ink);font-size:12px;margin:8px 0 0}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.aside p{margin:0 0 8px}
+.split{display:grid;gap:48px}
+@media(min-width:900px){.split{grid-template-columns:2fr 1fr}}
+.hours p{margin:0 0 4px}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="mark" href="index.html" aria-label="Shipfront">SHIPFRONT<span></span></a>
+  <nav>
+    <a href="index.html">Why Shipfront</a>
+    <a href="contact.html">Contact</a>
+    <a class="cta" href="quote.html">Get a Quote</a>
+  </nav>
+</div></header>
+<main>
+<section class="hero"><div class="wrap">
+  <p class="mono" style="color:var(--mist);margin:0 0 20px">Warehousing &amp; Fulfillment Solutions</p>
+  <h1>You Sell. We Ship.</h1>
+  <p class="sub">eCommerce at Scale</p>
+  <p class="lead">Shipfront helps eCommerce merchants scale by taking care of their logistics needs, so that they can focus on growing their business.</p>
+  <div class="row">
+    <a class="cta" href="quote.html">Get a Quote</a>
+    <a class="link" href="contact.html">1933 S. Broadway, Los Angeles</a>
+  </div>
+  <p>A person at Shipfront replies. The warehouse is at 1933 S. Broadway.</p>
+</div></section>
+<section class="proof"><p class="mono">1933 S. Broadway · The Reef · Los Angeles · 10 / 110 / 101</p></section>
+<section class="wrap grid">
+  <h2 class="mono">Warehousing</h2>
+  <p>Our warehouses provide the necessary space, security, temperature-control, and FDA compliant capabilities to store your products before shipping them to customers. Our inventory management system tracks all items across every SKU to know where they are located, how long they have been there, and the quantity on hand. We actively forecast inventory demand to keep your supply chain running optimally.</p>
+  <h2 class="mono rule">Fulfillment</h2>
+  <p class="rule">We build custom workflows to pick, pack, label, and ship your products exactly how you would like. That means working with any carrier across traditional partners, as well as the most innovative companies in last-mile and same-day delivery. We get your products to your customers, quickly and accurately.</p>
+  <h2 class="mono rule">Integrations</h2>
+  <p class="rule">Shipfront is built on the Flowspace Warehouse Management System (WMS) - an innovative software solution for managing the needs of today's warehousing &amp; fulfillment operations. Through the WMS, Shipfront integrates with partners across the supply chain ecosystem - from eCommerce platforms to same-day delivery services.</p>
+  <h2 class="mono rule">Location</h2>
+  <div class="rule">
+    <p>Situated in downtown L.A., next to the 10, 110, and 101 freeways - Shipfront is perfectly positioned to serve your eCommerce business. Not only do we inbound your products efficiently, we also deliver them quickly to your customers through our strong carrier and same-day delivery integrations.</p>
+    <p>Easy access to interstate freeways, courier depots, train stations, and airports</p>
+  </div>
+</section>
+<section class="chips wrap">
+  <span class="chip">Inbound</span><span class="chip">Kitting</span><span class="chip">Storage</span><span class="chip">FBA Prep</span><span class="chip">Outbound</span><span class="chip">Last-Mile</span><span class="chip">Same-Day</span>
+</section>
+<section class="essay">Customer-success is our obsession, with dedicated account managers for every merchant and industry-leading capabilities across temperature control, same-day delivery, FBA prep, and much more.</section>
+<section class="end"><a class="cta" href="quote.html">Get a Quote</a></section>
+</main>
+<footer class="wrap">
+  <span>1933 S. Broadway, Los Angeles CA 90007</span>
+  <a href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+  <a href="privacy.html">Privacy</a>
+</footer>
+</body></html>
