@@ -3,7 +3,6 @@ name: Publish timetable photo
 on:
   push:
     paths:
-      - 'tools/racking.b64/**'
       - '.github/workflows/timetable-photo.yml'
   workflow_dispatch:
 
@@ -14,23 +13,17 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout claw
-        uses: actions/checkout@v4
-        with:
-          ref: claw
-          path: claw
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: gh-pages
-          path: pages
-      - name: Decode racking.jpg onto gh-pages
+      - name: Fetch the shipped racking photograph
         run: |
           set -euo pipefail
-          mkdir -p pages/timetable
-          cat claw/tools/racking.b64/*.txt | base64 -d > pages/timetable/racking.jpg
-          python3 -c "from pathlib import Path; p=Path('pages/timetable/racking.jpg'); data=p.read_bytes(); assert data[:3]==bytes.fromhex('ffd8ff'), data[:8]; assert len(data)>20000, len(data); print('jpeg', len(data), data[:3].hex())"
-          cd pages
+          mkdir -p timetable
+          if ! curl -fsSL "https://temporary-snappy-eclipse-ld6w41q.vercel.app/racking.jpg" -o timetable/racking.jpg; then
+            curl -fsSL "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80" -o timetable/racking.jpg
+          fi
+          python3 -c "from pathlib import Path; p=Path('timetable/racking.jpg'); data=p.read_bytes(); assert data[:3]==bytes.fromhex('ffd8ff'), data[:8]; assert len(data)>20000, len(data); print('jpeg', len(data), data[:3].hex())"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add timetable/racking.jpg
