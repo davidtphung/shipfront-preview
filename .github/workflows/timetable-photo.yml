@@ -1,0 +1,42 @@
+name: Publish timetable photo
+
+on:
+  push:
+    paths:
+      - 'tools/racking.b64/**'
+      - '.github/workflows/timetable-photo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout claw
+        uses: actions/checkout@v4
+        with:
+          ref: claw
+          path: claw
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+      - name: Decode racking.jpg onto gh-pages
+        run: |
+          set -euo pipefail
+          mkdir -p pages/timetable
+          cat claw/tools/racking.b64/*.txt | base64 -d > pages/timetable/racking.jpg
+          python3 -c "from pathlib import Path; p=Path('pages/timetable/racking.jpg'); data=p.read_bytes(); assert data[:3]==bytes.fromhex('ffd8ff'), data[:8]; assert len(data)>20000, len(data); print('jpeg', len(data), data[:3].hex())"
+          cd pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add timetable/racking.jpg
+          if git diff --cached --quiet; then
+            echo "photo unchanged"
+          else
+            git commit -m "Add Timetable racking photograph."
+            git push
+          fi
