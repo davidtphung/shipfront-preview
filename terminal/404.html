@@ -11,7 +11,7 @@
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/terminal/favicon.svg" />
-    <link rel="apple-touch-icon" href="/shipfront-preview/terminal/favicon.svg" />
+    <link rel="stylesheet" href="/shipfront-preview/terminal/assets/index-BIudNghz.css" />
     <link
       rel="preload"
       as="image"
@@ -20,17 +20,101 @@
       imagesrcset="/shipfront-preview/terminal/dock-800.webp 800w, /shipfront-preview/terminal/dock.webp 1600w"
       imagesizes="(min-width: 64rem) min(34rem, 46vw), calc(100vw - 2.5rem)"
     />
-    <script type="module" crossorigin src="/shipfront-preview/terminal/assets/index-C5OXKnfz.js"></script>
-    <link rel="stylesheet" crossorigin href="/shipfront-preview/terminal/assets/index-BIudNghz.css">
   </head>
   <body>
-    <div id="root"></div>
-    <noscript>
-      <p style="color: #ffffff; background: #000000; padding: 1.5rem; font: 1rem/1.6 system-ui, sans-serif">
-        Shipfront needs JavaScript to run. To reach us directly, email
-        <a style="color: #ffffff" href="mailto:info@myshipfront.com">info@myshipfront.com</a>. The
-        warehouse is at 1933 S. Broadway, The Reef, Los Angeles.
-      </p>
-    </noscript>
+    <div class="site-shell">
+      <a class="skip-link" href="#main">Skip to main content</a>
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="wordmark" href="/shipfront-preview/terminal/">
+            <span>SHIPFRONT</span>
+            <span class="wordmark__pip decor" aria-hidden="true"></span>
+          </a>
+          <nav aria-label="Main">
+            <ul class="nav__list">
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/#why-shipfront">Why Shipfront</a>
+              </li>
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/contact/">Contact</a>
+              </li>
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/quote/">Get a Quote</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="site-main" id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="container hero__inner">
+            <div class="hero__copy">
+              <h1 class="hero__title" id="hero-title">You Sell. We Ship.</h1>
+              <p class="hero__trust">
+                A person at Shipfront replies. The warehouse is at 1933 S. Broadway.
+              </p>
+              <div class="hero__cta">
+                <a class="cta" href="/shipfront-preview/terminal/quote/">Get a Quote</a>
+              </div>
+            </div>
+            <figure class="dock" aria-labelledby="dock-caption">
+              <picture class="dock__frame">
+                <source
+                  type="image/webp"
+                  srcset="/shipfront-preview/terminal/dock-800.webp 800w, /shipfront-preview/terminal/dock.webp 1600w"
+                  sizes="(min-width: 64rem) min(34rem, 46vw), calc(100vw - 2.5rem)"
+                />
+                <img
+                  class="dock__img"
+                  src="/shipfront-preview/terminal/dock.jpg"
+                  width="1600"
+                  height="1066"
+                  alt="A dark warehouse loading bay at night."
+                  decoding="async"
+                  fetchpriority="high"
+                />
+              </picture>
+              <figcaption class="dock__caption" id="dock-caption">
+                Night dock · 1933 S. Broadway
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="section" id="why-shipfront" tabindex="-1" aria-labelledby="props-title">
+          <div class="container">
+            <div class="section__head">
+              <h2 class="section__title" id="props-title">Why Shipfront</h2>
+            </div>
+            <ul class="props">
+              <li class="card">
+                <h3 class="card__title">Warehousing</h3>
+                <p>Space and handling at 1933 S. Broadway.</p>
+              </li>
+              <li class="card">
+                <h3 class="card__title">Fulfillment</h3>
+                <p>Inbound, kitting, storage, outbound.</p>
+              </li>
+              <li class="card">
+                <h3 class="card__title">eCommerce Integrations</h3>
+                <p>The stack you already sell on.</p>
+              </li>
+              <li class="card">
+                <h3 class="card__title">Location</h3>
+                <p>Downtown Los Angeles. The Reef, 1933 S. Broadway.</p>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <div class="site-footer__contact">
+            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles</address>
+            <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+          </div>
+          <p class="site-footer__built">Built by David T Phung.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
