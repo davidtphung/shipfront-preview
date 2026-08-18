@@ -1,0 +1,85 @@
+name: Publish terminal dock still
+
+on:
+  push:
+    paths:
+      - '.github/workflows/terminal-photo.yml'
+      - 'terminal-dock/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+      - name: Vendor the in-repo still and drop Pexels hotlinks
+        run: |
+          set -euo pipefail
+          python3 << 'PY'
+          import base64
+          from pathlib import Path
+
+          src = Path('src/terminal-dock')
+          dest = Path('pages/terminal')
+          dest.mkdir(parents=True, exist_ok=True)
+
+          def decode(name: str, parts: list[str]) -> None:
+              b64 = ''.join((src / part).read_text().strip() for part in parts)
+              data = base64.b64decode(b64)
+              (dest / name).write_bytes(data)
+              print(name, len(data), data[:4])
+
+          decode('dock-800.webp', [f'dock-800.webp.b64.{i:02d}' for i in range(2)])
+          decode('dock.webp', [f'dock.webp.b64.{i:02d}' for i in range(5)])
+          decode('dock.jpg', [f'dock.jpg.b64.{i:02d}' for i in range(6)])
+
+          webp = (dest / 'dock.webp').read_bytes()
+          webp800 = (dest / 'dock-800.webp').read_bytes()
+          jpeg = (dest / 'dock.jpg').read_bytes()
+          assert webp[:4] == b'RIFF' and webp[8:12] == b'WEBP', webp[:12]
+          assert webp800[:4] == b'RIFF' and webp800[8:12] == b'WEBP', webp800[:12]
+          assert jpeg[:3] == bytes.fromhex('ffd8ff'), jpeg[:8]
+          assert len(webp) > 20_000 and len(jpeg) > 20_000
+
+          pexels_1600 = 'https://images.pexels.com/photos/257636/pexels-photo-257636.jpeg?auto=compress&cs=tinysrgb&w=1600'
+          pexels_800 = 'https://images.pexels.com/photos/257636/pexels-photo-257636.jpeg?auto=compress&cs=tinysrgb&w=800'
+          js_old = (
+              'var N={webp:`' + pexels_1600 + '`,webp800:`' + pexels_800 + '`,jpeg:`' + pexels_1600 + '`,'
+          )
+          js_new = 'var N={webp:M(`dock.webp`),webp800:M(`dock-800.webp`),jpeg:M(`dock.jpg`,'
+
+          for path in dest.rglob('*'):
+              if not path.is_file() or path.suffix not in {'.html', '.js', '.css'}:
+                  continue
+              text = path.read_text()
+              rewritten = (
+                  text.replace(js_old, js_new)
+                  .replace(pexels_1600, '/shipfront-preview/terminal/dock.webp')
+                  .replace(pexels_800, '/shipfront-preview/terminal/dock-800.webp')
+                  .replace('type="image/jpeg"', 'type="image/webp"')
+              )
+              if 'pexels' in rewritten.lower() or 'images.pexels.com' in rewritten:
+                  raise SystemExit(f'pexels remains in {path}')
+              if rewritten != text:
+                  path.write_text(rewritten)
+                  print('rewrote', path)
+          PY
+          cd pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add terminal
+          if git diff --cached --quiet; then
+            echo "preview unchanged"
+          else
+            git commit -m "Vendor Terminal night-dock still under /terminal/. Drop Pexels hotlinks."
+            git push
+          fi
