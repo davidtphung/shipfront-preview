@@ -3,34 +3,176 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shipfront</title>
-    <meta
-      name="description"
-      content="You Sell. We Ship. A person at Shipfront replies. The warehouse is at 1933 S. Broadway."
-    />
+    <title>Get a Quote | Shipfront</title>
+    <meta name="description" content="We'll use this to quote you. A person replies." />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/terminal/favicon.svg" />
-    <link rel="apple-touch-icon" href="/shipfront-preview/terminal/favicon.svg" />
-    <link
-      rel="preload"
-      as="image"
-      type="image/webp"
-      href="/shipfront-preview/terminal/dock.webp"
-      imagesrcset="/shipfront-preview/terminal/dock-800.webp 800w, /shipfront-preview/terminal/dock.webp 1600w"
-      imagesizes="(min-width: 64rem) min(34rem, 46vw), calc(100vw - 2.5rem)"
-    />
-    <script type="module" crossorigin src="/shipfront-preview/terminal/assets/index-C5OXKnfz.js"></script>
-    <link rel="stylesheet" crossorigin href="/shipfront-preview/terminal/assets/index-BIudNghz.css">
+    <link rel="stylesheet" href="/shipfront-preview/terminal/assets/index-BIudNghz.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <noscript>
-      <p style="color: #ffffff; background: #000000; padding: 1.5rem; font: 1rem/1.6 system-ui, sans-serif">
-        Shipfront needs JavaScript to run. To reach us directly, email
-        <a style="color: #ffffff" href="mailto:info@myshipfront.com">info@myshipfront.com</a>. The
-        warehouse is at 1933 S. Broadway, The Reef, Los Angeles.
-      </p>
-    </noscript>
+    <div class="site-shell">
+      <a class="skip-link" href="#main">Skip to main content</a>
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="wordmark" href="/shipfront-preview/terminal/">
+            <span>SHIPFRONT</span>
+            <span class="wordmark__pip decor" aria-hidden="true"></span>
+          </a>
+          <nav aria-label="Main">
+            <ul class="nav__list">
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/#why-shipfront">Why Shipfront</a>
+              </li>
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/contact/">Contact</a>
+              </li>
+              <li>
+                <a class="nav__link" href="/shipfront-preview/terminal/quote/" aria-current="page">Get a Quote</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="site-main" id="main" tabindex="-1">
+        <div class="page-head">
+          <div class="container">
+            <h1 class="page-head__title">Get a Quote</h1>
+          </div>
+        </div>
+        <div class="quote-body">
+          <div class="container" id="quote-box">
+            <form class="form" id="quote-form" novalidate>
+              <div class="error-summary" id="quote-summary" hidden role="alert" tabindex="-1">
+                <h2 class="error-summary__heading">
+                  <span class="field__error-mark decor" aria-hidden="true">!</span>
+                  Check these fields
+                </h2>
+                <p class="error-summary__lead">Fix these and try again:</p>
+                <ul class="error-summary__list" id="quote-summary-list"></ul>
+              </div>
+              <div class="form__fields">
+                <div class="field">
+                  <label class="field__label" for="quote-name">Name<span class="field__required">(required)</span></label>
+                  <p class="field__error" id="quote-name-error" hidden>
+                    <span class="field__error-mark decor" aria-hidden="true">!</span>
+                    <span></span>
+                  </p>
+                  <input class="input" id="quote-name" name="name" type="text" required autocomplete="name" maxlength="80" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="quote-email">Email<span class="field__required">(required)</span></label>
+                  <p class="field__error" id="quote-email-error" hidden>
+                    <span class="field__error-mark decor" aria-hidden="true">!</span>
+                    <span></span>
+                  </p>
+                  <input class="input" id="quote-email" name="email" type="email" required autocomplete="email" inputmode="email" maxlength="254" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="quote-company">Company<span class="field__required">(required)</span></label>
+                  <p class="field__error" id="quote-company-error" hidden>
+                    <span class="field__error-mark decor" aria-hidden="true">!</span>
+                    <span></span>
+                  </p>
+                  <input class="input" id="quote-company" name="company" type="text" required autocomplete="organization" maxlength="120" />
+                </div>
+              </div>
+              <p class="form__disclosure">We'll use this to quote you. A person replies.</p>
+              <div>
+                <button class="cta" id="quote-submit" type="submit">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <div class="site-footer__contact">
+            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles</address>
+            <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+          </div>
+          <p class="site-footer__built">Built by David T Phung.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      (function () {
+        var form = document.getElementById('quote-form')
+        var box = document.getElementById('quote-box')
+        var summary = document.getElementById('quote-summary')
+        var summaryList = document.getElementById('quote-summary-list')
+        var submit = document.getElementById('quote-submit')
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+        var limits = { name: 80, email: 254, company: 120 }
+        var labels = { name: 'Name', email: 'Email', company: 'Company' }
+
+        function required(value, label, max) {
+          if (value.trim() === '') return label + ' is required.'
+          if (value.trim().length > max) return label + ' must be ' + max + ' characters or fewer.'
+          return ''
+        }
+
+        function showError(id, message) {
+          var node = document.getElementById(id + '-error')
+          var input = document.getElementById(id)
+          if (!message) {
+            node.hidden = true
+            input.removeAttribute('aria-invalid')
+            input.removeAttribute('aria-describedby')
+            return
+          }
+          node.querySelector('span:last-child').textContent = message
+          node.hidden = false
+          input.setAttribute('aria-invalid', 'true')
+          input.setAttribute('aria-describedby', id + '-error')
+        }
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault()
+          var values = {
+            name: document.getElementById('quote-name').value,
+            email: document.getElementById('quote-email').value,
+            company: document.getElementById('quote-company').value,
+          }
+          var errors = {
+            name: required(values.name, labels.name, limits.name),
+            email: required(values.email, labels.email, limits.email),
+            company: required(values.company, labels.company, limits.company),
+          }
+          if (!errors.email && !emailRe.test(values.email.trim())) {
+            errors.email = 'Enter an email address, including the @.'
+          }
+          showError('quote-name', errors.name)
+          showError('quote-email', errors.email)
+          showError('quote-company', errors.company)
+          var entries = [
+            { id: 'quote-name', message: errors.name },
+            { id: 'quote-email', message: errors.email },
+            { id: 'quote-company', message: errors.company },
+          ].filter(function (entry) { return entry.message })
+          if (entries.length) {
+            summaryList.innerHTML = entries
+              .map(function (entry) {
+                return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
+              })
+              .join('')
+            summary.hidden = false
+            summary.focus()
+            return
+          }
+          submit.setAttribute('aria-disabled', 'true')
+          submit.textContent = 'Sending'
+          window.setTimeout(function () {
+            box.innerHTML =
+              '<div class="form-success" role="status" tabindex="-1" aria-labelledby="quote-success-heading">' +
+              '<h2 class="form-success__heading" id="quote-success-heading">Thanks.</h2>' +
+              '<p class="form-success__body">Someone from Shipfront will reach out shortly. We will ask about volume and what you ship then.</p>' +
+              '</div>'
+            var confirmation = box.querySelector('.form-success')
+            confirmation.focus()
+          }, 400)
+        })
+      })()
+    </script>
   </body>
 </html>
