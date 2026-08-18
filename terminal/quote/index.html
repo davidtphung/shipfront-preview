@@ -82,6 +82,12 @@
                 <button class="cta" id="quote-submit" type="submit">Send</button>
               </div>
             </form>
+            <template id="quote-success-template">
+              <div class="form-success" role="status" tabindex="-1" aria-labelledby="quote-success-heading">
+                <h2 class="form-success__heading" id="quote-success-heading">Thanks.</h2>
+                <p class="form-success__body">Someone from Shipfront will reach out shortly. We'll ask about volume and what you ship then.</p>
+              </div>
+            </template>
           </div>
         </div>
       </main>
@@ -105,13 +111,11 @@
         var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
         var limits = { name: 80, email: 254, company: 120 }
         var labels = { name: 'Name', email: 'Email', company: 'Company' }
-
         function required(value, label, max) {
           if (value.trim() === '') return label + ' is required.'
           if (value.trim().length > max) return label + ' must be ' + max + ' characters or fewer.'
           return ''
         }
-
         function showError(id, message) {
           var node = document.getElementById(id + '-error')
           var input = document.getElementById(id)
@@ -126,7 +130,6 @@
           input.setAttribute('aria-invalid', 'true')
           input.setAttribute('aria-describedby', id + '-error')
         }
-
         form.addEventListener('submit', function (event) {
           event.preventDefault()
           var values = {
@@ -151,11 +154,9 @@
             { id: 'quote-company', message: errors.company },
           ].filter(function (entry) { return entry.message })
           if (entries.length) {
-            summaryList.innerHTML = entries
-              .map(function (entry) {
-                return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
-              })
-              .join('')
+            summaryList.innerHTML = entries.map(function (entry) {
+              return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
+            }).join('')
             summary.hidden = false
             summary.focus()
             return
@@ -163,13 +164,9 @@
           submit.setAttribute('aria-disabled', 'true')
           submit.textContent = 'Sending'
           window.setTimeout(function () {
-            box.innerHTML =
-              '<div class="form-success" role="status" tabindex="-1" aria-labelledby="quote-success-heading">' +
-              '<h2 class="form-success__heading" id="quote-success-heading">Thanks.</h2>' +
-              '<p class="form-success__body">Someone from Shipfront will reach out shortly. We will ask about volume and what you ship then.</p>' +
-              '</div>'
-            var confirmation = box.querySelector('.form-success')
-            confirmation.focus()
+            var success = document.getElementById('quote-success-template')
+            box.innerHTML = success.innerHTML
+            box.querySelector('.form-success').focus()
           }, 400)
         })
       })()
