@@ -1,0 +1,97 @@
+name: Assemble terminal-dock chunks
+
+on:
+  push:
+    paths:
+      - '.github/workflows/assemble-terminal-dock.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claw
+      - name: Fetch exact night-dock base64 chunks
+        run: |
+          set -euo pipefail
+          python3 << 'PY'
+          import hashlib, urllib.request
+          from pathlib import Path
+
+          files = [
+            ("dock-800.webp.b64.00", 45000, "948416345aa7e257ce9a73678db5741bcfb5584d2bf235815f15f43b29a07998",
+             ["https://paste.rs/0dual", "https://litter.catbox.moe/q9jttv.00"]),
+            ("dock-800.webp.b64.01", 43448, "32a6b15537dbeb0c3725bb39086ba4bdb48a687d2fbb7e42f8466c37ffebcdad",
+             ["https://paste.rs/4S1qM", "https://litter.catbox.moe/orqjww.01"]),
+            ("dock.webp.b64.00", 70000, "f42047b521ea1785a16fe24b0021f039b15f15fbbbd3962c409c45c422d3aa11",
+             ["https://paste.rs/qwgO6", "https://litter.catbox.moe/3epr4u.00"]),
+            ("dock.webp.b64.01", 70000, "9758b3a5897be7e918a6ed40495725f4686029ed5e9d6f6def2bbbdd4a46a237",
+             ["https://paste.rs/InhyK", "https://litter.catbox.moe/ic7x7j.01"]),
+            ("dock.webp.b64.02", 70000, "14b97afa305bbb481cfa44c7a6668209adbfff19a2978300f3a9a923a91fe204",
+             ["https://paste.rs/QJzTm", "https://litter.catbox.moe/gr8812.02"]),
+            ("dock.webp.b64.03", 70000, "9c900a5ca4c03d7c5a9d2d6198bbf8354db8c1652f554750a53ffded74d71efe",
+             ["https://paste.rs/HhP39", "https://litter.catbox.moe/idymmk.03"]),
+            ("dock.webp.b64.04", 31736, "478eb4fdda1a2ead26b4b72e312907c3c622c179ae14a58c1859c274a65c451d",
+             ["https://paste.rs/lPxKR", "https://litter.catbox.moe/aph4fm.04"]),
+            ("dock.jpg.b64.00", 70000, "8d79d0d496a76b879184a730192406f7b2e4c1e25da1c60b9c9003d008f5a9bd",
+             ["https://paste.rs/r9uOe", "https://litter.catbox.moe/okhbdu.00"]),
+            ("dock.jpg.b64.01", 70000, "a03f7aae4d94df4501c1891ef69f7fd24f1a9fcaedd8d4f23a74c4624e53973e",
+             ["https://paste.rs/kZmSH", "https://litter.catbox.moe/ynqeh6.01"]),
+            ("dock.jpg.b64.02", 70000, "44bfac1c158ab8ea43b385fbe2c3e4615de06804cd379178979ec5186e225346",
+             ["https://paste.rs/bV5Ec", "https://litter.catbox.moe/xg6zwn.02"]),
+            ("dock.jpg.b64.03", 70000, "1bf9644292d6cf7ad0a3b049be1ec132b97b9eb1958b532b726c0c136eb53d91",
+             ["https://paste.rs/flhgV", "https://litter.catbox.moe/dzzjrx.03"]),
+            ("dock.jpg.b64.04", 70000, "2a65fa654cac9a88fb7bcf3fe39c7e8110634c30eabd6344f178cfe0ee03e0a7",
+             ["https://paste.rs/FIy0c", "https://litter.catbox.moe/02iegm.04"]),
+            ("dock.jpg.b64.05", 52296, "9b2c53b072379f8b45650ee08dda8e67bf4aa81d3f898163ad8ac72d199af58c",
+             ["https://paste.rs/4Qe79", "https://litter.catbox.moe/cc2q8y.05"]),
+          ]
+
+          dest = Path("terminal-dock")
+          dest.mkdir(parents=True, exist_ok=True)
+
+          def fetch(url: str) -> bytes:
+              req = urllib.request.Request(url, headers={"User-Agent": "shipfront-assemble"})
+              with urllib.request.urlopen(req, timeout=60) as r:
+                  return r.read()
+
+          for name, size, digest, urls in files:
+              data = None
+              last = None
+              for url in urls:
+                  try:
+                      data = fetch(url)
+                      break
+                  except Exception as e:
+                      last = e
+              if data is None:
+                  raise SystemExit(f"download failed {name}: {last}")
+              got = hashlib.sha256(data).hexdigest()
+              if len(data) != size or got != digest:
+                  raise SystemExit(f"mismatch {name} size {len(data)}/{size} sha {got}")
+              (dest / name).write_bytes(data)
+              print("ok", name, size)
+
+          keep = {row[0] for row in files}
+          for p in dest.rglob("*"):
+              if p.is_file() and p.relative_to(dest).as_posix() not in keep:
+                  print("remove", p)
+                  p.unlink()
+          PY
+      - name: Commit assembled chunks
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A terminal-dock
+          if git diff --cached --quiet; then
+            echo "no chunk changes"
+          else
+            git commit -m "Add vendored night-dock photograph base64 chunks."
+            git push origin HEAD:claw
+          fi
