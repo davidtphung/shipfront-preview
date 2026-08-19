@@ -67,7 +67,7 @@ footer{border-top:1px solid var(--hair);padding:28px 0 48px;color:var(--mist);fo
       </div>
       <div class="hp" aria-hidden="true"><label for="website_url">Website</label><input id="website_url" name="website_url" tabindex="-1" autocomplete="off"/></div>
       <button class="cta" type="submit" id="go">Get a Quote</button>
-      <p style="color:var(--mist);font-size:12px;margin:16px 0 0">We'll use this to quote you. A person replies. <a href="privacy.html">Privacy</a></p>
+      <p style="color:var(--mist);font-size:12px;margin:16px 0 0">We'll use this to quote you. <a href="privacy.html">Privacy</a></p>
     </form>
   </div>
   <aside class="aside">
@@ -102,7 +102,7 @@ q.addEventListener('submit',function(e){
   document.getElementById('go').textContent='Sending\u2026';
   document.getElementById('go').disabled=true;
   setTimeout(function(){
-    document.getElementById('panel').innerHTML='<h1>Thanks.</h1><p style="font-size:18px">Someone from Shipfront will reach out shortly. We\'ll ask about volume and what you ship then.</p><p style="margin-top:28px"><a href="index.html">Back to Shipfront</a></p>';
+    document.getElementById('panel').innerHTML='<h1>Preview only</h1><p style="font-size:18px">This form does not send. For a real inquiry, email <a href="mailto:info@myshipfront.com">info@myshipfront.com</a></p><p style="margin-top:28px"><a href="index.html">Back to Shipfront</a></p>';
   },400);
 });
 </script>
