@@ -165,6 +165,7 @@
             return
           }
           submit.setAttribute('aria-disabled', 'true')
+          submit.disabled = true
           submit.textContent = 'Sending'
           window.setTimeout(function () {
             var success = document.getElementById('quote-success-template')
