@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Get a Quote | Shipfront</title>
-    <meta name="description" content="We'll use this to quote you. A person replies." />
+    <meta
+      name="description"
+      content="Please take a moment to give us some information. We have expert agents standing by to take care of your logistics needs."
+    />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/terminal/favicon.svg" />
     <link rel="stylesheet" href="/shipfront-preview/terminal/assets/index-BIudNghz.css" />
+    <link rel="stylesheet" href="/shipfront-preview/terminal/official.css" />
   </head>
   <body>
     <div class="site-shell">
@@ -37,7 +41,11 @@
       <main class="site-main" id="main" tabindex="-1">
         <div class="page-head">
           <div class="container">
+            <p class="page-head__kicker">Fast &amp; Easy Quotes</p>
             <h1 class="page-head__title">Get a Quote</h1>
+            <p class="page-head__intro">
+              Please take a moment to give us some information. We have expert agents standing by to take care of your logistics needs.
+            </p>
           </div>
         </div>
         <div class="quote-body">
@@ -94,8 +102,9 @@
       <footer class="site-footer">
         <div class="container site-footer__inner">
           <div class="site-footer__contact">
-            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles</address>
+            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles, CA 90007</address>
             <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+            <a class="site-footer__link" href="https://www.myshipfront.com/">myshipfront.com</a>
           </div>
           <p class="site-footer__built">Built by David T Phung.</p>
         </div>
@@ -111,11 +120,13 @@
         var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
         var limits = { name: 80, email: 254, company: 120 }
         var labels = { name: 'Name', email: 'Email', company: 'Company' }
+
         function required(value, label, max) {
           if (value.trim() === '') return label + ' is required.'
           if (value.trim().length > max) return label + ' must be ' + max + ' characters or fewer.'
           return ''
         }
+
         function showError(id, message) {
           var node = document.getElementById(id + '-error')
           var input = document.getElementById(id)
@@ -130,6 +141,7 @@
           input.setAttribute('aria-invalid', 'true')
           input.setAttribute('aria-describedby', id + '-error')
         }
+
         form.addEventListener('submit', function (event) {
           event.preventDefault()
           var values = {
@@ -154,9 +166,11 @@
             { id: 'quote-company', message: errors.company },
           ].filter(function (entry) { return entry.message })
           if (entries.length) {
-            summaryList.innerHTML = entries.map(function (entry) {
-              return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
-            }).join('')
+            summaryList.innerHTML = entries
+              .map(function (entry) {
+                return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
+              })
+              .join('')
             summary.hidden = false
             summary.focus()
             return
@@ -166,7 +180,8 @@
           window.setTimeout(function () {
             var success = document.getElementById('quote-success-template')
             box.innerHTML = success.innerHTML
-            box.querySelector('.form-success').focus()
+            var confirmation = box.querySelector('.form-success')
+            confirmation.focus()
           }, 400)
         })
       })()
