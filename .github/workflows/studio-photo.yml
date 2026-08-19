@@ -1,0 +1,37 @@
+name: Publish studio photo
+
+on:
+  push:
+    paths:
+      - '.github/workflows/studio-photo.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: Copy the shipped racking photograph into /studio
+        run: |
+          set -euo pipefail
+          mkdir -p studio
+          if [ -f timetable/racking.jpg ]; then
+            cp timetable/racking.jpg studio/racking.jpg
+          else
+            curl -fsSL "https://davidtphung.github.io/shipfront-preview/timetable/racking.jpg" -o studio/racking.jpg
+          fi
+          python3 -c "from pathlib import Path; p=Path('studio/racking.jpg'); data=p.read_bytes(); assert data[:3]==bytes.fromhex('ffd8ff'), data[:8]; assert len(data)>20000, len(data); print('jpeg', len(data), data[:3].hex())"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add studio/racking.jpg
+          if git diff --cached --quiet; then
+            echo "photo unchanged"
+          else
+            git commit -m "Add Studio racking photograph."
+            git push
+          fi
