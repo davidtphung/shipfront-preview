@@ -1,0 +1,71 @@
+name: Publish studio assets
+
+on:
+  push:
+    paths:
+      - '.github/workflows/studio-assets.yml'
+      - 'studio-build/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: pages
+      - name: Assemble Studio preview
+        run: |
+          set -euo pipefail
+          python3 << 'PY'
+          from collections import defaultdict
+          from pathlib import Path
+
+          src = Path('src/studio-build')
+          dest = Path('pages/studio')
+          dest.mkdir(parents=True, exist_ok=True)
+          (dest / 'assets').mkdir(exist_ok=True)
+
+          html = (src / 'index.html').read_text()
+          for name in ['index.html', '404.html']:
+              (dest / name).write_text(html)
+          for route in ['quote', 'contact']:
+              folder = dest / route
+              folder.mkdir(exist_ok=True)
+              (folder / 'index.html').write_text(html)
+
+          for css in (src / 'assets').glob('*.css'):
+              (dest / 'assets' / css.name).write_text(css.read_text())
+              print('css', css.name, css.stat().st_size)
+
+          groups = defaultdict(list)
+          for chunk in (src / 'assets').glob('*.js.*'):
+              groups[chunk.name.rsplit('.', 1)[0]].append(chunk)
+          for name, parts in groups.items():
+              ordered = sorted(parts)
+              data = ''.join(part.read_text() for part in ordered)
+              (dest / 'assets' / name).write_text(data)
+              print('js', name, len(data), [part.name for part in ordered])
+
+          still = Path('pages/timetable/racking.jpg')
+          if still.exists():
+              (dest / 'racking.jpg').write_bytes(still.read_bytes())
+              print('still', still.stat().st_size)
+          PY
+          cd pages
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add studio
+          if git diff --cached --quiet; then
+            echo "preview unchanged"
+          else
+            git commit -m "Publish Shipfront Studio assets under /studio/."
+            git push
+          fi
