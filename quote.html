@@ -7,7 +7,7 @@
 <style>
 :root{--paper:#E8E4DB;--ink:#141311;--mist:#5A564E;--signal:#FF6A00;--hair:rgba(20,19,17,0.14)}
 *{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
-a{color:inherit}button,input{font:inherit}
+a{color:inherit}button,input,textarea{font:inherit}
 .mono{font-family:ui-monospace,"SF Mono",SFMono-Regular,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 header{border-bottom:1px solid var(--hair)}
@@ -24,7 +24,10 @@ nav a{text-decoration:none;font-size:14px;min-height:44px;display:inline-flex;al
 h1{font-size:clamp(40px,8vw,72px);line-height:.92;margin:0 0 20px;letter-spacing:-.02em}
 .sub{font-size:18px;color:var(--mist);margin:0 0 24px}
 label{display:block;margin:0 0 8px;color:var(--mist)}
-input[type=text],input[type=email]{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--hair);background:var(--paper);color:var(--ink);border-radius:0}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],textarea{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--hair);background:var(--paper);color:var(--ink);border-radius:0}
+textarea{min-height:100px;resize:vertical}
+.fgroup{display:grid;gap:20px}
+@media(min-width:40rem){.fgroup{grid-template-columns:1fr 1fr}}
 .err{border-color:var(--ink)!important}
 .msg{color:var(--ink);font-size:12px;margin:8px 0 0}
 .hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
@@ -48,12 +51,19 @@ footer{border-top:1px solid var(--hair);padding:28px 0 48px;color:var(--mist);fo
   <div id="panel">
     <p class="mono" style="color:var(--mist);margin:0 0 12px">Quote</p>
     <h1>Fast &amp; Easy Quotes</h1>
-    <p class="sub">We have expert agents standing by to take care of your logistics needs.</p>
+    <p class="sub">Please take a moment to give us some information. We have expert agents standing by to take care of your logistics needs.</p>
     <form id="q" novalidate>
-      <div style="margin:0 0 20px">
-        <label class="mono" for="name">Name (required)</label>
-        <input id="name" name="name" type="text" autocomplete="name" required/>
-        <p class="msg" id="name-e" hidden>Required</p>
+      <div class="fgroup" style="margin:0 0 20px">
+        <div>
+          <label class="mono" for="first">First Name (required)</label>
+          <input id="first" name="first" type="text" autocomplete="given-name" required/>
+          <p class="msg" id="first-e" hidden>Required</p>
+        </div>
+        <div>
+          <label class="mono" for="last">Last Name (required)</label>
+          <input id="last" name="last" type="text" autocomplete="family-name" required/>
+          <p class="msg" id="last-e" hidden>Required</p>
+        </div>
       </div>
       <div style="margin:0 0 20px">
         <label class="mono" for="email">Email (required)</label>
@@ -61,12 +71,40 @@ footer{border-top:1px solid var(--hair);padding:28px 0 48px;color:var(--mist);fo
         <p class="msg" id="email-e" hidden></p>
       </div>
       <div style="margin:0 0 20px">
-        <label class="mono" for="company">Company (required)</label>
-        <input id="company" name="company" type="text" autocomplete="organization" required/>
-        <p class="msg" id="company-e" hidden>Required</p>
+        <label class="mono" for="phone">Phone (required)</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel" required/>
+        <p class="msg" id="phone-e" hidden>Required</p>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="company">Company Name</label>
+        <input id="company" name="company" type="text" autocomplete="organization"/>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="website">Website</label>
+        <input id="website" name="website" type="url" placeholder="http://" autocomplete="url"/>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="product">Product Description</label>
+        <textarea id="product" name="product"></textarea>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="skus">Number of SKUs</label>
+        <input id="skus" name="skus" type="number" min="0" inputmode="numeric"/>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="shipments">Shipments per Month</label>
+        <input id="shipments" name="shipments" type="number" min="0" inputmode="numeric"/>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="turns">Turns per Month</label>
+        <input id="turns" name="turns" type="number" min="0" inputmode="numeric"/>
+      </div>
+      <div style="margin:0 0 20px">
+        <label class="mono" for="additional">Additional Information</label>
+        <textarea id="additional" name="additional"></textarea>
       </div>
       <div class="hp" aria-hidden="true"><label for="website_url">Website</label><input id="website_url" name="website_url" tabindex="-1" autocomplete="off"/></div>
-      <button class="cta" type="submit" id="go">Get a Quote</button>
+      <button class="cta" type="submit" id="go">Send</button>
       <p style="color:var(--mist);font-size:12px;margin:16px 0 0">We'll use this to quote you. <a href="privacy.html">Privacy</a></p>
     </form>
   </div>
@@ -85,21 +123,26 @@ q.addEventListener('submit',function(e){
   if(document.getElementById('website_url').value) return;
   if(Date.now()-t<2000) return;
   let ok=true;
-  const name=document.getElementById('name');
+  const first=document.getElementById('first');
+  const last=document.getElementById('last');
   const email=document.getElementById('email');
-  const company=document.getElementById('company');
-  const ne=document.getElementById('name-e');
+  const phone=document.getElementById('phone');
+  const fe=document.getElementById('first-e');
+  const le=document.getElementById('last-e');
   const ee=document.getElementById('email-e');
-  const ce=document.getElementById('company-e');
+  const pe=document.getElementById('phone-e');
   function show(el,msgEl,msg){el.classList.add('err');msgEl.hidden=false;if(msg)msgEl.textContent=msg;ok=false}
   function hide(el,msgEl){el.classList.remove('err');msgEl.hidden=true}
-  if(!name.value.trim()) show(name,ne,'Required'); else hide(name,ne);
+  if(!first.value.trim()) show(first,fe,'Required'); else hide(first,fe);
+  if(!last.value.trim()) show(last,le,'Required'); else hide(last,le);
   if(!email.value.trim()) show(email,ee,'Required');
   else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) show(email,ee,'Enter a valid email.');
   else hide(email,ee);
-  if(!company.value.trim()) show(company,ce,'Required'); else hide(company,ce);
+  if(!phone.value.trim()) show(phone,pe,'Required');
+  else if(phone.value.trim().length<7) show(phone,pe,'Phone number is too short.');
+  else hide(phone,pe);
   if(!ok) return;
-  document.getElementById('go').textContent='Sending\u2026';
+  document.getElementById('go').textContent='Sending';
   document.getElementById('go').disabled=true;
   setTimeout(function(){
     document.getElementById('panel').innerHTML='<h1>Preview only</h1><p style="font-size:18px">This form does not send. For a real inquiry, email <a href="mailto:info@myshipfront.com">info@myshipfront.com</a></p><p style="margin-top:28px"><a href="index.html">Back to Shipfront</a></p>';
