@@ -24,6 +24,21 @@
         resize: vertical;
         font-family: inherit;
       }
+      .quote-still-section {
+        padding-block-start: var(--sp-6);
+        padding-block-end: var(--sp-5);
+      }
+      .quote-still__frame {
+        display: block;
+        overflow: hidden;
+        max-inline-size: 48rem;
+        margin-inline: auto;
+      }
+      .quote-still__img {
+        display: block;
+        inline-size: 100%;
+        block-size: auto;
+      }
     </style>
   </head>
   <body>
@@ -53,6 +68,23 @@
             </p>
           </div>
         </div>
+        <section class="quote-still-section">
+          <div class="container">
+            <figure class="quote-still">
+              <picture class="quote-still__frame">
+                <img
+                  class="quote-still__img"
+                  src="/shipfront-preview/timetable/fulfillment-pick-pack.jpg"
+                  width="1600"
+                  height="2133"
+                  alt="Workers picking and packing orders on a busy fulfillment floor."
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
+            </figure>
+          </div>
+        </section>
         <div class="quote-body">
           <div class="container" id="quote-box">
             <form class="form" id="quote-form" novalidate>
