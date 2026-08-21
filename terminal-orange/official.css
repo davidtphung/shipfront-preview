@@ -1,0 +1,69 @@
+/* Extra rules for the official myshipfront.com writing.
+   Loaded after the hashed Terminal stylesheet on the static Pages preview. */
+
+/* Terminal Orange color tokens */
+:root {
+  --ground: #000;
+  --type: #fff;
+  --signal: #FF6A00;
+  --cta-label: #000;
+  --signal-hover: #FF8533;
+  --focus-halo: #FF6A008c;
+}
+
+.hero__kicker,
+.page-head__kicker {
+  margin-block-end: var(--sp-3);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.hero__sub {
+  max-width: 28ch;
+  margin-block-start: var(--sp-3);
+  font-size: var(--step-2);
+  font-weight: 650;
+}
+
+.hero__lead,
+.hero__essay,
+.page-head__intro {
+  max-width: 62ch;
+  margin-block-start: var(--sp-4);
+  font-size: var(--step-0);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chips__item {
+  padding: var(--sp-1) var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  color: var(--type);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.03em;
+}
+
+.card__note {
+  margin: 0;
+  color: var(--type);
+  font-size: var(--step--1);
+}
+
+.contact-hero__lead {
+  max-width: 28ch;
+  margin-block-start: var(--sp-4);
+  font-size: var(--step-2);
+  font-weight: 650;
+}
