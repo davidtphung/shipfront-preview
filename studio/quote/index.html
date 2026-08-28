@@ -3,271 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Get a Quote | Shipfront</title>
+    <title>Shipfront</title>
     <meta
       name="description"
-      content="Please take a moment to give us some information. We have expert agents standing by to take care of your logistics needs."
+      content="You Sell. We Ship. A person at Shipfront replies. The warehouse is at 1933 S. Broadway."
     />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/studio/favicon.svg" />
-    <link rel="stylesheet" crossorigin href="/shipfront-preview/studio/assets/index-BfZxwzeJ.css">
-    <style>
-      .form { max-width: 36rem; }
-      .field-group { display: grid; gap: var(--sp-5); }
-      @media (width >= 40rem) {
-        .field-group { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
-      textarea.input {
-        min-block-size: 6rem;
-        padding: var(--sp-3) var(--sp-4);
-        resize: vertical;
-        font-family: inherit;
-      }
-      .quote-still-section {
-        padding-block-start: var(--sp-6);
-        padding-block-end: var(--sp-5);
-      }
-      .quote-still__frame {
-        display: block;
-        overflow: hidden;
-        max-inline-size: 48rem;
-        margin-inline: auto;
-      }
-      .quote-still__img {
-        display: block;
-        inline-size: 100%;
-        block-size: auto;
-      }
-    </style>
+    <link rel="apple-touch-icon" href="/shipfront-preview/studio/favicon.svg" />
+    <script type="module" crossorigin src="/shipfront-preview/studio/assets/index-ClevELAv.js"></script>
+    <link rel="stylesheet" crossorigin href="/shipfront-preview/studio/assets/index-C4UOqUM9.css">
   </head>
   <body>
-    <div class="site-shell">
-      <a class="skip-link" href="#main">Skip to main content</a>
-      <header class="site-header">
-        <div class="container site-header__inner">
-          <a class="wordmark" href="/shipfront-preview/studio/">
-            <span class="wordmark__name">SHIPFRONT</span>
-            <span class="wordmark__bar decor" aria-hidden="true"></span>
-          </a>
-          <nav aria-label="Main">
-            <ul class="nav__list">
-              <li><a class="nav__link" href="/shipfront-preview/studio/#works">Why Shipfront</a></li>
-              <li><a class="nav__link" href="/shipfront-preview/studio/contact/">Contact</a></li>
-              <li><a class="nav__cta" href="/shipfront-preview/studio/quote/" aria-current="page">Get a Quote</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <main class="site-main" id="main" tabindex="-1">
-        <div class="page-head">
-          <div class="container">
-            <h1 class="page-head__title">Fast &amp; Easy Quotes</h1>
-            <p class="page-head__intro">
-              Please take a moment to give us some information. We have expert agents standing by to take care of your logistics needs.
-            </p>
-          </div>
-        </div>
-        <section class="quote-still-section">
-          <div class="container">
-            <figure class="quote-still">
-              <picture class="quote-still__frame">
-                <img
-                  class="quote-still__img"
-                  src="/shipfront-preview/studio/warehousing-racking.jpg"
-                  width="1600"
-                  height="2133"
-                  alt="Warehouse with tall racking systems storing organized inventory."
-                  loading="eager"
-                  decoding="async"
-                />
-              </picture>
-            </figure>
-          </div>
-        </section>
-        <div class="quote-body">
-          <div class="container" id="quote-box">
-            <form class="form" id="quote-form" novalidate>
-              <div class="error-summary" id="quote-summary" hidden role="alert" tabindex="-1">
-                <h2 class="error-summary__heading">
-                  <span class="field__error-mark decor" aria-hidden="true">!</span>
-                  Check these fields
-                </h2>
-                <p class="error-summary__lead">Fix these and try again:</p>
-                <ul class="error-summary__list" id="quote-summary-list"></ul>
-              </div>
-              <div class="form__fields">
-                <div class="field-group">
-                  <div class="field">
-                    <label class="field__label" for="quote-first">First Name<span class="field__required">(required)</span></label>
-                    <p class="field__error" id="quote-first-error" hidden>
-                      <span class="field__error-mark decor" aria-hidden="true">!</span>
-                      <span></span>
-                    </p>
-                    <input class="input" id="quote-first" name="first" type="text" required autocomplete="given-name" maxlength="80" />
-                  </div>
-                  <div class="field">
-                    <label class="field__label" for="quote-last">Last Name<span class="field__required">(required)</span></label>
-                    <p class="field__error" id="quote-last-error" hidden>
-                      <span class="field__error-mark decor" aria-hidden="true">!</span>
-                      <span></span>
-                    </p>
-                    <input class="input" id="quote-last" name="last" type="text" required autocomplete="family-name" maxlength="80" />
-                  </div>
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-email">Email<span class="field__required">(required)</span></label>
-                  <p class="field__error" id="quote-email-error" hidden>
-                    <span class="field__error-mark decor" aria-hidden="true">!</span>
-                    <span></span>
-                  </p>
-                  <input class="input" id="quote-email" name="email" type="email" required autocomplete="email" inputmode="email" maxlength="254" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-phone">Phone<span class="field__required">(required)</span></label>
-                  <p class="field__error" id="quote-phone-error" hidden>
-                    <span class="field__error-mark decor" aria-hidden="true">!</span>
-                    <span></span>
-                  </p>
-                  <input class="input" id="quote-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="30" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-company">Company Name</label>
-                  <input class="input" id="quote-company" name="company" type="text" autocomplete="organization" maxlength="120" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-website">Website</label>
-                  <input class="input" id="quote-website" name="website" type="url" placeholder="http://" autocomplete="url" maxlength="200" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-product">Product Description</label>
-                  <textarea class="input" id="quote-product" name="product" maxlength="500"></textarea>
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-skus">Number of SKUs</label>
-                  <input class="input" id="quote-skus" name="skus" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-shipments">Shipments per Month</label>
-                  <input class="input" id="quote-shipments" name="shipments" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-turns">Turns per Month</label>
-                  <input class="input" id="quote-turns" name="turns" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-additional">Additional Information</label>
-                  <textarea class="input" id="quote-additional" name="additional" maxlength="1000"></textarea>
-                </div>
-              </div>
-              <p class="form__disclosure">We'll use this to quote you.</p>
-              <div>
-                <button class="cta" id="quote-submit" type="submit">Send</button>
-              </div>
-            </form>
-            <template id="quote-success-template">
-              <div class="form-success" role="status" tabindex="-1" aria-labelledby="quote-success-heading">
-                <h2 class="form-success__heading" id="quote-success-heading">Preview only</h2>
-                <p class="form-success__body">This form does not send. For a real inquiry, email <a href="mailto:info@myshipfront.com">info@myshipfront.com</a></p>
-              </div>
-            </template>
-          </div>
-        </div>
-      </main>
-      <footer class="site-footer">
-        <div class="container site-footer__inner">
-          <div class="site-footer__contact">
-            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles, CA 90007</address>
-            <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
-            <a class="site-footer__link" href="https://www.myshipfront.com/">myshipfront.com</a>
-          </div>
-          <p>Built by David T Phung.</p>
-        </div>
-      </footer>
-    </div>
-    <script>
-      (function () {
-        var form = document.getElementById('quote-form')
-        var box = document.getElementById('quote-box')
-        var summary = document.getElementById('quote-summary')
-        var summaryList = document.getElementById('quote-summary-list')
-        var submit = document.getElementById('quote-submit')
-        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-        var limits = { first: 80, last: 80, email: 254, phone: 30 }
-        var labels = { first: 'First Name', last: 'Last Name', email: 'Email', phone: 'Phone' }
-
-        function required(value, label, max) {
-          if (value.trim() === '') return label + ' is required.'
-          if (value.trim().length > max) return label + ' must be ' + max + ' characters or fewer.'
-          return ''
-        }
-
-        function showError(id, message) {
-          var node = document.getElementById(id + '-error')
-          var input = document.getElementById(id)
-          if (!message) {
-            node.hidden = true
-            input.removeAttribute('aria-invalid')
-            input.removeAttribute('aria-describedby')
-            return
-          }
-          node.querySelector('span:last-child').textContent = message
-          node.hidden = false
-          input.setAttribute('aria-invalid', 'true')
-          input.setAttribute('aria-describedby', id + '-error')
-        }
-
-        form.addEventListener('submit', function (event) {
-          event.preventDefault()
-          var values = {
-            first: document.getElementById('quote-first').value,
-            last: document.getElementById('quote-last').value,
-            email: document.getElementById('quote-email').value,
-            phone: document.getElementById('quote-phone').value,
-          }
-          var errors = {
-            first: required(values.first, labels.first, limits.first),
-            last: required(values.last, labels.last, limits.last),
-            email: required(values.email, labels.email, limits.email),
-            phone: required(values.phone, labels.phone, limits.phone),
-          }
-          if (!errors.email && !emailRe.test(values.email.trim())) {
-            errors.email = 'Enter an email address, including the @.'
-          }
-          if (!errors.phone && values.phone.trim().length < 7) {
-            errors.phone = 'Phone number is too short.'
-          }
-          showError('quote-first', errors.first)
-          showError('quote-last', errors.last)
-          showError('quote-email', errors.email)
-          showError('quote-phone', errors.phone)
-          var entries = [
-            { id: 'quote-first', message: errors.first },
-            { id: 'quote-last', message: errors.last },
-            { id: 'quote-email', message: errors.email },
-            { id: 'quote-phone', message: errors.phone },
-          ].filter(function (entry) { return entry.message })
-          if (entries.length) {
-            summaryList.innerHTML = entries
-              .map(function (entry) {
-                return '<li><a href="#' + entry.id + '">' + entry.message + '</a></li>'
-              })
-              .join('')
-            summary.hidden = false
-            summary.focus()
-            return
-          }
-          submit.setAttribute('aria-disabled', 'true')
-          submit.disabled = true
-          submit.textContent = 'Sending'
-          window.setTimeout(function () {
-            var success = document.getElementById('quote-success-template')
-            box.innerHTML = success.innerHTML
-            var confirmation = box.querySelector('.form-success')
-            confirmation.focus()
-          }, 400)
-        })
-      })()
-    </script>
+    <svg hidden aria-hidden="true" viewBox="0 0 24 26">
+      <g
+        fill="#000000"
+        stroke="#FF6A00"
+        stroke-width="2"
+        stroke-linecap="square"
+        stroke-linejoin="miter"
+      >
+        <path d="M7 9 L12 6 L17 9 L12 12 Z" />
+        <path d="M7 9 L7 16 L12 19 L17 16 L17 9" />
+        <path d="M12 12 L12 19" />
+        <path d="M12 6 L12 13 L7 16" />
+        <path d="M12 13 L17 16" />
+      </g>
+    </svg>
+    <div id="root"></div>
+    <noscript>
+      <p style="color: #000000; background: #ffffff; padding: 1.5rem; font: 14px/1.2 Helvetica Neue, Helvetica, Arial, sans-serif">
+        Shipfront needs JavaScript to run. To reach us directly, email
+        <a style="color: #000000" href="mailto:info@myshipfront.com">info@myshipfront.com</a>. The
+        warehouse is at 1933 S. Broadway, The Reef, Los Angeles.
+      </p>
+    </noscript>
   </body>
 </html>
