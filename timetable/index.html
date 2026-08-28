@@ -8,11 +8,12 @@
       name="description"
       content="You Sell. We Ship. Shipfront helps eCommerce merchants scale by taking care of their logistics needs, so that they can focus on growing their business."
     />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#FFFFFF" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/timetable/favicon.svg" />
     <link rel="stylesheet" crossorigin href="/shipfront-preview/timetable/assets/index-BM0t_Shm.css">
     <link rel="stylesheet" href="/shipfront-preview/timetable/spacing.css">
+    <link rel="stylesheet" href="/shipfront-preview/timetable/lock.css" />
   </head>
   <body>
     <div class="site-shell">
@@ -20,9 +21,23 @@
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="wordmark" href="/shipfront-preview/timetable/">
+          <span class="wordmark__lock">
+            <svg class="cube" viewBox="0 0 24 26" width="24" height="26" aria-hidden="true">
+        <polygon points="12,1 23,7 12,13 1,7" fill="#000000"/>
+        <polygon points="1,7 12,13 12,25 1,19" fill="#000000"/>
+        <polygon points="23,7 12,13 12,25 23,19" fill="#000000"/>
+        <g fill="none" stroke="#FF6A00" stroke-width="1.2" stroke-linejoin="miter" stroke-linecap="square">
+          <polyline points="12,1 23,7 12,13 1,7 12,1"/>
+          <polyline points="1,7 1,19 12,25 23,19 23,7"/>
+          <line x1="12" y1="13" x2="12" y2="25"/>
+          <line x1="12" y1="13" x2="1" y2="7"/>
+          <line x1="12" y1="13" x2="23" y2="7"/>
+        </g>
+      </svg>
             <span class="wordmark__name">SHIPFRONT</span>
-            <span class="wordmark__bar decor" aria-hidden="true"></span>
-          </a>
+          </span>
+          <span class="wordmark__bar" aria-hidden="true"></span>
+        </a>
           <nav aria-label="Main">
             <ul class="nav__list">
               <li><a class="nav__link" href="/shipfront-preview/timetable/#services">Why Shipfront</a></li>
@@ -165,7 +180,7 @@
             <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
             <a class="site-footer__link" href="https://www.myshipfront.com/">myshipfront.com</a>
           </div>
-          <p class="site-footer__built">Built by David T Phung.</p>
+          <p class="site-footer__built">Built by David T Phung</p>
         </div>
       </footer>
     </div>

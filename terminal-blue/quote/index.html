@@ -13,6 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/terminal-blue/favicon.svg" />
     <link rel="stylesheet" href="/shipfront-preview/terminal-blue/assets/index.css" />
     <link rel="stylesheet" href="/shipfront-preview/terminal-blue/official.css" />
+    <link rel="stylesheet" href="/shipfront-preview/terminal-blue/lock.css" />
     <style>
       .form { max-width: 36rem; }
       .field-group { display: grid; gap: var(--sp-5); }
@@ -48,9 +49,23 @@
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="wordmark" href="/shipfront-preview/terminal-blue/">
-            <span>SHIPFRONT</span>
-            <span class="wordmark__pip decor" aria-hidden="true"></span>
-          </a>
+          <span class="wordmark__lock">
+            <svg class="cube" viewBox="0 0 24 26" width="24" height="26" aria-hidden="true">
+        <polygon points="12,1 23,7 12,13 1,7" fill="#000000"/>
+        <polygon points="1,7 12,13 12,25 1,19" fill="#000000"/>
+        <polygon points="23,7 12,13 12,25 23,19" fill="#000000"/>
+        <g fill="none" stroke="#FF6A00" stroke-width="1.2" stroke-linejoin="miter" stroke-linecap="square">
+          <polyline points="12,1 23,7 12,13 1,7 12,1"/>
+          <polyline points="1,7 1,19 12,25 23,19 23,7"/>
+          <line x1="12" y1="13" x2="12" y2="25"/>
+          <line x1="12" y1="13" x2="1" y2="7"/>
+          <line x1="12" y1="13" x2="23" y2="7"/>
+        </g>
+      </svg>
+            <span class="wordmark__name">SHIPFRONT</span>
+          </span>
+          <span class="wordmark__bar" aria-hidden="true"></span>
+        </a>
           <nav aria-label="Main">
             <ul class="nav__list">
               <li>
@@ -103,24 +118,14 @@
                 <p class="error-summary__lead">Fix these and try again:</p>
                 <ul class="error-summary__list" id="quote-summary-list"></ul>
               </div>
-              <div class="form__fields">
-                <div class="field-group">
-                  <div class="field">
-                    <label class="field__label" for="quote-first">First Name<span class="field__required">(required)</span></label>
-                    <p class="field__error" id="quote-first-error" hidden>
-                      <span class="field__error-mark decor" aria-hidden="true">!</span>
-                      <span></span>
-                    </p>
-                    <input class="input" id="quote-first" name="first" type="text" required autocomplete="given-name" maxlength="80" />
-                  </div>
-                  <div class="field">
-                    <label class="field__label" for="quote-last">Last Name<span class="field__required">(required)</span></label>
-                    <p class="field__error" id="quote-last-error" hidden>
-                      <span class="field__error-mark decor" aria-hidden="true">!</span>
-                      <span></span>
-                    </p>
-                    <input class="input" id="quote-last" name="last" type="text" required autocomplete="family-name" maxlength="80" />
-                  </div>
+                            <div class="form__fields">
+                <div class="field">
+                  <label class="field__label" for="quote-name">Name<span class="field__required">(required)</span></label>
+                  <p class="field__error" id="quote-name-error" hidden>
+                    <span class="field__error-mark decor" aria-hidden="true">!</span>
+                    <span></span>
+                  </p>
+                  <input class="input" id="quote-name" name="name" type="text" required autocomplete="name" maxlength="80" />
                 </div>
                 <div class="field">
                   <label class="field__label" for="quote-email">Email<span class="field__required">(required)</span></label>
@@ -131,45 +136,17 @@
                   <input class="input" id="quote-email" name="email" type="email" required autocomplete="email" inputmode="email" maxlength="254" />
                 </div>
                 <div class="field">
-                  <label class="field__label" for="quote-phone">Phone<span class="field__required">(required)</span></label>
-                  <p class="field__error" id="quote-phone-error" hidden>
+                  <label class="field__label" for="quote-company">Company<span class="field__required">(required)</span></label>
+                  <p class="field__error" id="quote-company-error" hidden>
                     <span class="field__error-mark decor" aria-hidden="true">!</span>
                     <span></span>
                   </p>
-                  <input class="input" id="quote-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="30" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-company">Company Name</label>
-                  <input class="input" id="quote-company" name="company" type="text" autocomplete="organization" maxlength="120" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-website">Website</label>
-                  <input class="input" id="quote-website" name="website" type="url" placeholder="http://" autocomplete="url" maxlength="200" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-product">Product Description</label>
-                  <textarea class="input" id="quote-product" name="product" maxlength="500"></textarea>
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-skus">Number of SKUs</label>
-                  <input class="input" id="quote-skus" name="skus" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-shipments">Shipments per Month</label>
-                  <input class="input" id="quote-shipments" name="shipments" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-turns">Turns per Month</label>
-                  <input class="input" id="quote-turns" name="turns" type="number" min="0" inputmode="numeric" />
-                </div>
-                <div class="field">
-                  <label class="field__label" for="quote-additional">Additional Information</label>
-                  <textarea class="input" id="quote-additional" name="additional" maxlength="1000"></textarea>
+                  <input class="input" id="quote-company" name="company" type="text" required autocomplete="organization" maxlength="120" />
                 </div>
               </div>
               <p class="form__disclosure">We'll use this to quote you.</p>
               <div>
-                <button class="cta" id="quote-submit" type="submit">Send</button>
+                <button class="cta" id="quote-submit" type="submit">Get a Quote</button>
               </div>
             </form>
             <template id="quote-success-template">
@@ -188,7 +165,7 @@
             <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
             <a class="site-footer__link" href="https://www.myshipfront.com/">myshipfront.com</a>
           </div>
-          <p class="site-footer__built">Built by David T Phung.</p>
+          <p class="site-footer__built">Built by David T Phung</p>
         </div>
       </footer>
     </div>
@@ -200,8 +177,8 @@
         var summaryList = document.getElementById('quote-summary-list')
         var submit = document.getElementById('quote-submit')
         var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-        var limits = { first: 80, last: 80, email: 254, phone: 30 }
-        var labels = { first: 'First Name', last: 'Last Name', email: 'Email', phone: 'Phone' }
+        var limits = { name: 80, email: 254, company: 120 }
+        var labels = { name: 'Name', email: 'Email', company: 'Company' }
 
         function required(value, label, max) {
           if (value.trim() === '') return label + ' is required.'
@@ -227,32 +204,25 @@
         form.addEventListener('submit', function (event) {
           event.preventDefault()
           var values = {
-            first: document.getElementById('quote-first').value,
-            last: document.getElementById('quote-last').value,
+            name: document.getElementById('quote-name').value,
             email: document.getElementById('quote-email').value,
-            phone: document.getElementById('quote-phone').value,
+            company: document.getElementById('quote-company').value,
           }
           var errors = {
-            first: required(values.first, labels.first, limits.first),
-            last: required(values.last, labels.last, limits.last),
+            name: required(values.name, labels.name, limits.name),
             email: required(values.email, labels.email, limits.email),
-            phone: required(values.phone, labels.phone, limits.phone),
+            company: required(values.company, labels.company, limits.company),
           }
           if (!errors.email && !emailRe.test(values.email.trim())) {
             errors.email = 'Enter an email address, including the @.'
           }
-          if (!errors.phone && values.phone.trim().length < 7) {
-            errors.phone = 'Phone number is too short.'
-          }
-          showError('quote-first', errors.first)
-          showError('quote-last', errors.last)
+          showError('quote-name', errors.name)
           showError('quote-email', errors.email)
-          showError('quote-phone', errors.phone)
+          showError('quote-company', errors.company)
           var entries = [
-            { id: 'quote-first', message: errors.first },
-            { id: 'quote-last', message: errors.last },
+            { id: 'quote-name', message: errors.name },
             { id: 'quote-email', message: errors.email },
-            { id: 'quote-phone', message: errors.phone },
+            { id: 'quote-company', message: errors.company },
           ].filter(function (entry) { return entry.message })
           if (entries.length) {
             summaryList.innerHTML = entries
