@@ -1,0 +1,73 @@
+/* Friday Terminal lock: black, white, cube, one accent. */
+:root {
+  --ground: #000000;
+  --type: #ffffff;
+  --signal: #FF6A00;
+  --cta-label: #000000;
+  --signal-hover: #ff7c1f;
+  --signal-press: #e55f00;
+  --focus-halo: #ff6a008c;
+  --bar: 4px;
+}
+
+html,
+body,
+.site-shell {
+  background: #000000;
+  color: #ffffff;
+}
+
+.wordmark {
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 0 !important;
+  width: max-content;
+  text-decoration: none;
+}
+
+.wordmark__lock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wordmark__name {
+  color: #ffffff;
+}
+
+.cube {
+  display: block;
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.wordmark__pip,
+.wordmark .decor.wordmark__pip {
+  display: none !important;
+}
+
+.wordmark__bar {
+  display: block !important;
+  width: 100%;
+  height: var(--bar);
+  background: #FF6A00;
+  margin-block-start: 4px;
+}
+
+.cta,
+a.cta,
+button.cta,
+.nav__cta,
+a.nav__cta {
+  background: #FF6A00 !important;
+  color: #000000 !important;
+}
+
+.cta:hover,
+a.cta:hover,
+button.cta:hover,
+.nav__cta:hover {
+  background: #ff7c1f !important;
+  color: #000000 !important;
+}

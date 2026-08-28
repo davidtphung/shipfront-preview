@@ -13,6 +13,7 @@
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/terminal-orange/favicon.svg" />
     <link rel="stylesheet" href="/shipfront-preview/terminal-orange/assets/index-BIudNghz.css" />
     <link rel="stylesheet" href="/shipfront-preview/terminal-orange/official.css" />
+    <link rel="stylesheet" href="/shipfront-preview/terminal-orange/lock.css" />
     <link
       rel="preload"
       as="image"
@@ -28,9 +29,23 @@
       <header class="site-header">
         <div class="container site-header__inner">
           <a class="wordmark" href="/shipfront-preview/terminal-orange/">
-            <span>SHIPFRONT</span>
-            <span class="wordmark__pip decor" aria-hidden="true"></span>
-          </a>
+          <span class="wordmark__lock">
+            <svg class="cube" viewBox="0 0 80 80" width="22" height="22" aria-hidden="true">
+              <polygon points="40,14 62,27 40,40 18,27" fill="#000000"/>
+              <polygon points="18,27 40,40 40,66 18,53" fill="#000000"/>
+              <polygon points="62,27 40,40 40,66 62,53" fill="#000000"/>
+              <g fill="none" stroke="#FF6A00" stroke-width="1.75" stroke-linejoin="miter" stroke-linecap="square">
+                <polyline points="40,14 62,27 40,40 18,27 40,14"/>
+                <polyline points="18,27 18,53 40,66 62,53 62,27"/>
+                <line x1="40" y1="40" x2="40" y2="66"/>
+                <line x1="40" y1="40" x2="18" y2="27"/>
+                <line x1="40" y1="40" x2="62" y2="27"/>
+              </g>
+            </svg>
+            <span class="wordmark__name">SHIPFRONT</span>
+          </span>
+          <span class="wordmark__bar" aria-hidden="true"></span>
+        </a>
           <nav aria-label="Main">
             <ul class="nav__list">
               <li>
@@ -142,7 +157,7 @@
             <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
             <a class="site-footer__link" href="https://www.myshipfront.com/">myshipfront.com</a>
           </div>
-          <p class="site-footer__built">Built by David T Phung.</p>
+          <p class="site-footer__built">Built by David T Phung</p>
         </div>
       </footer>
     </div>
