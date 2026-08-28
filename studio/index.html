@@ -4,26 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shipfront</title>
-    <meta
-      name="description"
-      content="You Sell. We Ship. A person at Shipfront replies. The warehouse is at 1933 S. Broadway."
-    />
+    <meta name="description" content="You Sell. We Ship. A person at Shipfront replies. The warehouse is at 1933 S. Broadway." />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/studio/favicon.svg" />
-    <link rel="apple-touch-icon" href="/shipfront-preview/studio/favicon.svg" />
-    <script type="module" crossorigin src="/shipfront-preview/studio/assets/index-ClevELAv.js"></script>
-    <link rel="stylesheet" crossorigin href="/shipfront-preview/studio/assets/index-C4UOqUM9.css">
+    <link rel="stylesheet" href="/shipfront-preview/studio/studio.css" />
   </head>
   <body>
     <svg hidden aria-hidden="true" viewBox="0 0 24 26">
-      <g
-        fill="#000000"
-        stroke="#FF6A00"
-        stroke-width="2"
-        stroke-linecap="square"
-        stroke-linejoin="miter"
-      >
+      <g fill="#000000" stroke="#FF6A00" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
         <path d="M7 9 L12 6 L17 9 L12 12 Z" />
         <path d="M7 9 L7 16 L12 19 L17 16 L17 9" />
         <path d="M12 12 L12 19" />
@@ -31,13 +20,73 @@
         <path d="M12 13 L17 16" />
       </g>
     </svg>
-    <div id="root"></div>
-    <noscript>
-      <p style="color: #000000; background: #ffffff; padding: 1.5rem; font: 14px/1.2 Helvetica Neue, Helvetica, Arial, sans-serif">
-        Shipfront needs JavaScript to run. To reach us directly, email
-        <a style="color: #000000" href="mailto:info@myshipfront.com">info@myshipfront.com</a>. The
-        warehouse is at 1933 S. Broadway, The Reef, Los Angeles.
-      </p>
-    </noscript>
+    <div class="site-shell">
+      <a class="skip-link" href="#main">Skip to main content</a>
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="wordmark" href="/shipfront-preview/studio/">
+            <span class="wordmark__lockup">
+              <span class="wordmark__name">SHIPFRONT</span>
+              <svg class="cube-mark decor" viewBox="0 0 24 26" aria-hidden="true" focusable="false">
+      <g fill="#000000" stroke="#FF6A00" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+        <path d="M7 9 L12 6 L17 9 L12 12 Z" />
+        <path d="M7 9 L7 16 L12 19 L17 16 L17 9" />
+        <path d="M12 12 L12 19" />
+        <path d="M12 6 L12 13 L7 16" />
+        <path d="M12 13 L17 16" />
+      </g>
+    </svg>
+            </span>
+            <span class="wordmark__bar decor" aria-hidden="true"></span>
+          </a>
+          <nav aria-label="Main">
+            <ul class="nav__list">
+              <li><a class="nav__link" href="/shipfront-preview/studio/#why-shipfront">Why Shipfront</a></li>
+              <li><a class="nav__link" href="/shipfront-preview/studio/contact/">Contact</a></li>
+              <li><a class="nav__link nav__cta" href="/shipfront-preview/studio/quote/">Get a Quote</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="site-main" id="main" tabindex="-1">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="container">
+            <h1 class="hero__title" id="hero-title">You Sell.<br />We Ship.</h1>
+            <p class="hero__trust">A person at Shipfront replies. The warehouse is at 1933 S. Broadway.</p>
+            <div class="hero__cta"><a class="cta" href="/shipfront-preview/studio/quote/">Get a Quote</a></div>
+          </div>
+        </section>
+        <section class="still-section" aria-label="Dock · Racking, 1933 S. Broadway">
+          <div class="container">
+            <figure class="still">
+              <div class="still__frame">
+                <img class="still__img" src="/shipfront-preview/studio/racking.jpg" width="1600" height="1067" alt="A long warehouse aisle lined with steel racking and palletized goods at 1933 S. Broadway." />
+              </div>
+              <figcaption class="still__caption">Dock · Racking, 1933 S. Broadway</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="works-section" id="why-shipfront" tabindex="-1" aria-labelledby="props-title">
+          <div class="container">
+            <h2 class="works-section__title" id="props-title">Why Shipfront</h2>
+            <ul class="works">
+              <li class="card work"><h3 class="work__title">Warehousing</h3><p class="work__caption">Space and handling at 1933 S. Broadway.</p></li>
+              <li class="card work"><h3 class="work__title">Fulfillment</h3><p class="work__caption">Inbound, kitting, storage, outbound.</p></li>
+              <li class="card work"><h3 class="work__title">eCommerce Integrations</h3><p class="work__caption">The stack you already sell on.</p></li>
+              <li class="card work"><h3 class="work__title">Location</h3><p class="work__caption">Downtown Los Angeles. The Reef, 1933 S. Broadway.</p></li>
+            </ul>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <div class="site-footer__contact">
+            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles</address>
+            <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+          </div>
+          <p class="site-footer__built">Built by David T Phung.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

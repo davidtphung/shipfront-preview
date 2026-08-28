@@ -3,27 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Shipfront</title>
-    <meta
-      name="description"
-      content="You Sell. We Ship. A person at Shipfront replies. The warehouse is at 1933 S. Broadway."
-    />
+    <title>Get a Quote | Shipfront</title>
+    <meta name="description" content="We'll use this to quote you. A person replies." />
     <meta name="color-scheme" content="light" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/svg+xml" href="/shipfront-preview/studio/favicon.svg" />
-    <link rel="apple-touch-icon" href="/shipfront-preview/studio/favicon.svg" />
-    <script type="module" crossorigin src="/shipfront-preview/studio/assets/index-ClevELAv.js"></script>
-    <link rel="stylesheet" crossorigin href="/shipfront-preview/studio/assets/index-C4UOqUM9.css">
+    <link rel="stylesheet" href="/shipfront-preview/studio/studio.css" />
   </head>
   <body>
     <svg hidden aria-hidden="true" viewBox="0 0 24 26">
-      <g
-        fill="#000000"
-        stroke="#FF6A00"
-        stroke-width="2"
-        stroke-linecap="square"
-        stroke-linejoin="miter"
-      >
+      <g fill="#000000" stroke="#FF6A00" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
         <path d="M7 9 L12 6 L17 9 L12 12 Z" />
         <path d="M7 9 L7 16 L12 19 L17 16 L17 9" />
         <path d="M12 12 L12 19" />
@@ -31,13 +20,68 @@
         <path d="M12 13 L17 16" />
       </g>
     </svg>
-    <div id="root"></div>
-    <noscript>
-      <p style="color: #000000; background: #ffffff; padding: 1.5rem; font: 14px/1.2 Helvetica Neue, Helvetica, Arial, sans-serif">
-        Shipfront needs JavaScript to run. To reach us directly, email
-        <a style="color: #000000" href="mailto:info@myshipfront.com">info@myshipfront.com</a>. The
-        warehouse is at 1933 S. Broadway, The Reef, Los Angeles.
-      </p>
-    </noscript>
+    <div class="site-shell">
+      <a class="skip-link" href="#main">Skip to main content</a>
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="wordmark" href="/shipfront-preview/studio/">
+            <span class="wordmark__lockup">
+              <span class="wordmark__name">SHIPFRONT</span>
+              <svg class="cube-mark decor" viewBox="0 0 24 26" aria-hidden="true" focusable="false">
+      <g fill="#000000" stroke="#FF6A00" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+        <path d="M7 9 L12 6 L17 9 L12 12 Z" />
+        <path d="M7 9 L7 16 L12 19 L17 16 L17 9" />
+        <path d="M12 12 L12 19" />
+        <path d="M12 6 L12 13 L7 16" />
+        <path d="M12 13 L17 16" />
+      </g>
+    </svg>
+            </span>
+            <span class="wordmark__bar decor" aria-hidden="true"></span>
+          </a>
+          <nav aria-label="Main">
+            <ul class="nav__list">
+              <li><a class="nav__link" href="/shipfront-preview/studio/#why-shipfront">Why Shipfront</a></li>
+              <li><a class="nav__link" href="/shipfront-preview/studio/contact/">Contact</a></li>
+              <li><a class="nav__link nav__cta" href="/shipfront-preview/studio/quote/">Get a Quote</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <main class="site-main" id="main" tabindex="-1">
+        <div class="page-head"><div class="container"><h1 class="page-head__title">Get a Quote</h1></div></div>
+        <div class="quote-body">
+          <div class="container">
+            <form class="form" action="mailto:info@myshipfront.com" method="post" enctype="text/plain">
+              <div class="form__fields">
+                <div class="field">
+                  <label class="field__label" for="quote-name">Name <span class="field__required">(required)</span></label>
+                  <input class="input" id="quote-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="quote-email">Email <span class="field__required">(required)</span></label>
+                  <input class="input" id="quote-email" name="email" type="email" required autocomplete="email" inputmode="email" />
+                </div>
+                <div class="field">
+                  <label class="field__label" for="quote-company">Company <span class="field__required">(required)</span></label>
+                  <input class="input" id="quote-company" name="company" required autocomplete="organization" />
+                </div>
+              </div>
+              <p class="form__disclosure">We'll use this to quote you. A person replies.</p>
+              <div><button class="cta" type="submit">Send</button></div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <div class="site-footer__contact">
+            <address class="site-footer__address">1933 S. Broadway, The Reef, Los Angeles</address>
+            <a class="site-footer__link" href="mailto:info@myshipfront.com">info@myshipfront.com</a>
+          </div>
+          <p class="site-footer__built">Built by David T Phung.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
